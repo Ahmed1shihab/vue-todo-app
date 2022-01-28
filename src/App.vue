@@ -53,10 +53,6 @@ export default {
                 localStorage.theme === "light"
                     ? backDesktopLight
                     : backDesktopDark,
-            // todos: [
-            //     { id: 1, title: "ahmed is a good boy", completed: true },
-            //     { id: 2, title: "fuck u", completed: false },
-            // ],
             todos: [],
             id: 0,
         };
