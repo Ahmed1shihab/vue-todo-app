@@ -98,9 +98,17 @@ export default {
             localStorage.setItem("todos", JSON.stringify(this.todos));
         },
         checkedAllTodos() {
-            this.todos = this.todos.map((todo) =>
-                !todo.completed ? { ...todo, completed: true } : todo
-            );
+            if (this.todos.every((todo) => todo.completed)) {
+                this.todos = this.todos.map((todo) => ({
+                    ...todo,
+                    completed: false,
+                }));
+            } else {
+                this.todos = this.todos.map((todo) => ({
+                    ...todo,
+                    completed: true,
+                }));
+            }
             localStorage.setItem("todos", JSON.stringify(this.todos));
         },
         deleteTodo(todoId) {

@@ -1,10 +1,10 @@
 <template>
     <div
         class="bg-white dark:bg-[#25273c] p-3 flex items-center rounded-md h-14 transition-colors relative"
-        id="addTodoContainer"
+        ref="addTodoContainer"
     >
         <span
-            class="w-[18px] h-[18px] bg-transparent border border-gray-600 rounded-full inline-block"
+            class="w-[18px] h-[18px] bg-transparent border border-gray-600 rounded-full inline-block cursor-pointer"
             @click="checkedAll"
         ></span>
         <form @submit.prevent="AddTodo" class="w-full h-full ml-5">
@@ -28,14 +28,16 @@ export default {
     },
     methods: {
         AddTodo() {
-            if (!this.todoTitle || this.todoTitle === " ") {
-                return document
-                    .querySelector("div#addTodoContainer")
-                    .classList.add("border-2", "border-red-400");
+            if (!this.todoTitle.trim()) {
+                return this.$refs.addTodoContainer.classList.add(
+                    "border-2",
+                    "border-red-400"
+                );
             }
-            document
-                .querySelector("div#addTodoContainer")
-                .classList.remove("border-2", "border-red-400");
+            this.$refs.addTodoContainer.classList.remove(
+                "border-2",
+                "border-red-400"
+            );
             const newTodo = { title: this.todoTitle, completed: false };
             this.$emit("new-todo", newTodo);
             this.todoTitle = "";

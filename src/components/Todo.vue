@@ -3,7 +3,7 @@
         class="group w-full relative flex items-center p-5 gap-x-4 h-14 border-b border-gray-300 dark:border-gray-700 text-[#484b6a] dark:text-[#cacde8] select-text transition-colors"
     >
         <span
-            class="w-[18px] h-[18px] relative bg-transparent border border-gray-600 rounded-full inline-block transition-all"
+            class="w-[18px] h-[18px] relative bg-transparent border border-gray-600 rounded-full inline-block transition-all cursor-pointer"
             :id="isTodoCompleted"
             @click="makeTodoCompleted"
         ></span>

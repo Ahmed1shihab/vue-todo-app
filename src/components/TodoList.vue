@@ -1,14 +1,20 @@
 <template>
     <div
-        class="bg-white dark:bg-[#25273c] shadow-xl md:shadow-2xl rounded-md transition-colors"
+        class="bg-white dark:bg-[#25273c] shadow-xl md:shadow-2xl rounded-md transition-colors overflow-x-hidden"
     >
-        <div v-for="todo in filteredTodos" :key="todo.id">
-            <Todo
-                :todo="todo"
-                @delete-todo="deleteTodo"
-                @completed-todo="makeTodoCompleted"
-            ></Todo>
-        </div>
+        <transition-group
+            tag="div"
+            enter-active-class="animate__animated animate__fadeIn"
+            leave-active-class="animate__animated animate__bounceOutLeft"
+        >
+            <div v-for="todo in filteredTodos" :key="todo.id">
+                <Todo
+                    :todo="todo"
+                    @delete-todo="deleteTodo"
+                    @completed-todo="makeTodoCompleted"
+                ></Todo>
+            </div>
+        </transition-group>
         <div
             class="mb-24 md:mb-0 flex justify-between items-center p-3.5 text-[#9394a5] relative"
             v-if="this.todos.length > 0"
